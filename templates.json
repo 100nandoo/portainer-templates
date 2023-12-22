@@ -12043,6 +12043,122 @@
     {
       "categories": [
         "Other",
+        "Tools",
+        "Mine"
+      ],
+      "description": "Web File Browser which can be used as a middleware or standalone app.",
+      "image": "filebrowser/filebrowser",
+      "logo": "https://raw.githubusercontent.com/pi-hosted/pi-hosted/master/images/filebrowser.png",
+      "name": "filebrowser",
+      "note": "https://github.com/100nandoo/portainer-templates/blob/main/sources/100nandoo_templates.json",
+      "platform": "linux",
+      "env": [
+        {
+          "default": "1000",
+          "label": "PUID",
+          "name": "PUID"
+        },
+        {
+          "default": "1000",
+          "label": "PGID",
+          "name": "PGID"
+        }
+      ],
+      "ports": [
+        "8787:80/tcp"
+      ],
+      "restart_policy": "unless-stopped",
+      "title": "FileBrowser Mine",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/home/user",
+          "container": "/srv"
+        },
+        {
+          "bind": "/home/user/data/filebrowser/.filebrowser.json",
+          "container": "/.filebrowser.json"
+        },
+        {
+          "bind": "/home/user/data/filebrowser/filebrowser.db",
+          "container": "/database.db"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Tools",
+        "Mine"
+      ],
+      "description": "Cloudflare Tunnel",
+      "image": "erisamoe/cloudflared",
+      "logo": "https://avatars.githubusercontent.com/u/314135?s=48&v=4",
+      "name": "cloudflared",
+      "note": "https://hub.docker.com/r/erisamoe/cloudflared",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Cloudflared",
+      "network": "host",
+      "command": "tunnel run tunnel_name",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/home/user/data/.cloudflared",
+          "container": "/etc/cloudflared"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Discord",
+        "Music",
+        "Mine"
+      ],
+      "description": "Discord Music bot",
+      "image": "craumix/jmusicbot",
+      "logo": "https://jmusicbot.com/assets/images/logo.png",
+      "name": "jmusicbot",
+      "note": "https://github.com/jagrosh/MusicBot",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "JMusicbot",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/home/user/data/jmusicbot",
+          "container": "/jmb/config"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Telegram",
+        "Bot",
+        "Mine"
+      ],
+      "description": "My Personal telegram bot",
+      "image": "100nandoo/telegram-bot",
+      "logo": "https://avatars.githubusercontent.com/u/6113871?s=200&v=4",
+      "name": "telegram-bot",
+      "note": "https://github.com/100nandoo/telegram-bot",
+      "platform": "linux",
+      "restart_policy": "unless-stopped",
+      "title": "Telegram Bot",
+      "type": 1,
+      "volumes": [
+        {
+          "bind": "/home/user/data/telegram-bot/artemis.db",
+          "container": "/app/artemis.db"
+        },
+        {
+          "bind": "/home/user/data/telegram-bot/config.yml",
+          "container": "/app/config.yml"
+        }
+      ]
+    },
+    {
+      "categories": [
+        "Other",
         "Tools"
       ],
       "description": "Alpine xfce4 novnc",
